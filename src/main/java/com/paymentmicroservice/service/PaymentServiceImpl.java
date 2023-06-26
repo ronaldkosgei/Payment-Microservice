@@ -23,7 +23,7 @@ public class PaymentServiceImpl implements PaymentService {
     public Mono<Payment> savePayment(PaymentDto paymentDto) {
         Payment payment = PaymentMapper.mapToPayment(paymentDto);
         Mono<Payment> savedPayment = paymentRepository.save(payment);
-        return savedPayment.map(paymentEntity -> PaymentMapper.mapToPayment(paymentDto));
+        return paymentRepository.save(payment);
     }
 
 
